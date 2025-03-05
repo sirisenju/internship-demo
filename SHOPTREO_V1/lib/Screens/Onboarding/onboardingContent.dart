@@ -11,9 +11,27 @@ class OnboardingContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(heading, style: TextStyle(color: Colors.white)),
+        Text(
+            heading,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: "Filson.Pro",
+              fontSize: 24,
+              fontWeight: FontWeight.w500,
+              color: Colors.white
+            ),
+        ),
         SizedBox(height: 8,),
-        Text(subHeading, style: TextStyle(color: Colors.white))
+        Text(
+            subHeading,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: "Filson.Pro",
+              fontSize: 17,
+              fontWeight: FontWeight.w400,
+              color: Colors.white
+            ),
+        )
       ],
     );
   }

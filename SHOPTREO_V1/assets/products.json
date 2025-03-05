@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Headphones",
+    "price": 59.99,
+    "quantity": 20,
+    "image": "assets/shoe.png",
+    "description": "High-quality wireless headphones with noise cancellation."
+  },
+  {
+    "id": 2,
+    "name": "Smart Watch",
+    "price": 99.99,
+    "quantity": 15,
+    "image": "assets/shoe.png",
+    "description": "A stylish smartwatch with health tracking features."
+  },
+  {
+    "id": 3,
+    "name": "Gaming Mouse",
+    "price": 29.99,
+    "quantity": 30,
+    "image": "assets/shoe.png",
+    "description": "Ergonomic gaming mouse with customizable buttons."
+  },
+  {
+    "id": 4,
+    "name": "Mechanical Keyboard",
+    "price": 79.99,
+    "quantity": 10,
+    "image": "assets/shoe.png",
+    "description": "RGB mechanical keyboard with tactile feedback."
+  }
+]

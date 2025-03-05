@@ -38,6 +38,7 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_svg: ^2.0.17
   smooth_page_indicator: ^1.2.1
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +64,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/products.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -75,12 +77,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Filson.Pro
+      fonts:
+        - asset: assets/fonts/FilsonProRegular.ttf
+        - asset: assets/fonts/FilsonProBold.ttf
+#          style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

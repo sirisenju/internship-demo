@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
+import "package:google_fonts/google_fonts.dart";
 import "package:shoptreo_v1/Screens/Onboarding/onboardingContent.dart";
-import "package:dots_indicator/dots_indicator.dart";
+import "package:shoptreo_v1/components/colors/app_colors.dart";
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     super.dispose();
   }
 
-  bool isLastPage = false;
+  bool? isLastPage = false;
 
   final List<OnboardingContent> content = [
     OnboardingContent(
@@ -67,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           Column(
             children: [
-              SizedBox(height: 60,),
+              SizedBox(height: 70,),
               //skip butt for next
               Expanded(
                   flex: 2,
@@ -77,57 +78,82 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         onTap: (){
                           _pageController.jumpToPage(2);
                         },
-                          child: Text("Skip", style: TextStyle(color: Colors.white),))
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 20, top: 20),
+                            child: Text("Skip",
+                              style:  TextStyle(
+                                fontFamily: "Filson.Pro",
+                                fontSize: 24,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white
+                              ),
+                            ),
+                          )
+                      )
                   )
               ),
               Expanded(
                   flex: 1,
-                  child: PageView.builder(
-                    itemCount: content.length,
-                    controller: _pageController,
-                    onPageChanged: (index){
-                      setState(() => isLastPage = index == 2);
-                    },
-                    itemBuilder: (context, index) {
-                      return OnboardingContent(
-                      heading: content[index].heading,
-                      subHeading: content[index].subHeading
-                      );
-                    },
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: PageView.builder(
+                          itemCount: content.length,
+                          controller: _pageController,
+                          onPageChanged: (index){
+                            setState(() => isLastPage = index == 2);
+                          },
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 25, right: 25),
+                              child: OnboardingContent(
+                              heading: content[index].heading,
+                              subHeading: content[index].subHeading
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              //dots
+                              SmoothPageIndicator(
+                                controller: _pageController,
+                                count: content.length,
+                                effect: ExpandingDotsEffect(
+                                    spacing: 8.0,
+                                    dotWidth: 8.0,
+                                    dotHeight: 8.0,
+                                    dotColor: Colors.white,
+                                    activeDotColor: AppColors.primaryOrange
+                                ),
+                              ),
+
+                              //buttons
+                              isLastPage! ?
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      shape: CircleBorder(),
+                                      backgroundColor: AppColors.primaryOrange,
+                                    fixedSize: Size(65, 65)
+                                  ),
+                                  onPressed: (){
+                                    Navigator.pushNamed(context, '/login');
+                                  },
+                                  child: SvgPicture.asset("assets/arror-right.svg")
+                              ) : SizedBox(),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
                   ),
               ),
-
-              //dot and next button
-              SizedBox(height: 20,),
-              Row(
-                children: [
-                  //dots
-                  SmoothPageIndicator(
-                      controller: _pageController,
-                      count: content.length,
-                    effect: ExpandingDotsEffect(
-                        spacing: 8.0,
-                        dotWidth: 8.0,
-                        dotHeight: 8.0,
-                        dotColor: Colors.white,
-                        activeDotColor: Colors.yellow
-                    ),
-                  ),
-
-                  //buttons
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: CircleBorder()
-                    ),
-                      onPressed: (){
-                      _pageController.nextPage(
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.ease);
-                      },
-                      child: SvgPicture.asset("assets/arror-right.svg")
-                  ),
-                ],
-              )
+              SizedBox(height: 60,),
             ],
           ),
         ],

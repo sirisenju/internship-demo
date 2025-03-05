@@ -1,0 +1,2 @@
+C:/Users/emues/Projects/personal_projects/Shop/internship-demo/SHOPTREO_V1/android/app/.cxx/Debug/6x6p6j51/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/emues/Projects/personal_projects/Shop/internship-demo/SHOPTREO_V1/android/app/.cxx/Debug/6x6p6j51/armeabi-v7a/CMakeFiles/rebuild_cache.dir
